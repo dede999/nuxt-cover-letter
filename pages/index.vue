@@ -16,4 +16,5 @@
       to have problems with the API limit
     </p>
   </div>
+  <OptionSetter />
 </template>
