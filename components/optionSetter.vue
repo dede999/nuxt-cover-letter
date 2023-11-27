@@ -4,7 +4,7 @@
       <UButton
           color="emerald"
           :variant="variantSetter('instructions')"
-          @click="mode='instructions'">
+          @click="setDisplayedTab('instructions')">
         Instructions
       </UButton>
     </div>
@@ -12,7 +12,7 @@
       <UButton
           color="emerald"
           :variant="variantSetter('letter')"
-          @click="mode='letter'">
+          @click="setDisplayedTab('letter')">
         Letter Form
       </UButton>
     </div>
@@ -20,7 +20,7 @@
       <UButton
           color="emerald"
           :variant="variantSetter('result')"
-          @click="mode='result'">
+          @click="setDisplayedTab('result')">
         Result
       </UButton>
     </div>
@@ -28,9 +28,11 @@
 </template>
 
 <script setup lang="ts">
-const mode = ref('instructions')
+const store = useDisplayedData();
+const { setDisplayedTab } = store;
+const { displayedTab } = storeToRefs(store);
 
 function variantSetter(option: string) {
-  return mode.value === option ? 'solid' : 'outline';
+  return displayedTab.value === option ? 'solid' : 'outline';
 }
 </script>
